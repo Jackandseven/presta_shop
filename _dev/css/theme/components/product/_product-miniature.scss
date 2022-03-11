@@ -1,0 +1,47 @@
+
+.product-miniature {
+  $self: &;
+
+  &__quick-view {
+    position: absolute;
+    right: map-get($spacers, 2);
+    bottom: map-get($spacers, 2);
+    z-index: 2;
+    width: 1.7em;
+    height: 1.7em;
+    padding: 0;
+    line-height: 1.7em;
+    border: 0;
+    @include font-size(20px);
+  }
+
+  &__quick-view-icon {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &__pricing {
+    margin: 0 0 map-get($spacers, 4);
+  }
+
+  &__title {
+    $number-of-lines: 2;
+    $line-height: 1.3;
+    height: #{$number-of-lines * $line-height}em;
+    overflow: hidden;
+
+    line-height: $line-height;
+  }
+
+  &--smaller {
+    .price,
+    #{$self}__title {
+      @include font-size(15px);
+    }
+
+    #{$self}__pricing {
+      margin: 0;
+    }
+
+  }
+}

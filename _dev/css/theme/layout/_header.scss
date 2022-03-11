@@ -1,0 +1,75 @@
+/* HEADER STYLES */
+
+.l-header {
+  margin: 0 0 map-get($spacers, 3);
+  border-bottom: 1px solid $border-color;
+}
+
+.header-top {
+  padding: map-get($spacers, 2) 0;
+  @include media-breakpoint-up(md) {
+    padding: 0;
+  }
+
+  &__row {
+    flex-wrap: nowrap;
+    align-items: center;
+    @include media-breakpoint-up(md) {
+      flex-wrap: wrap;
+    }
+
+  }
+
+  &__link {
+    display: block;
+    padding: map-get($spacers, 1);
+    color: $gray-700;
+    text-decoration: none;
+    border-radius: $border-radius;
+
+    @include media-breakpoint-up(sm) {
+      padding: map-get($spacers, 2);
+    }
+
+    @include hover-focus() {
+      color: $black;
+      text-decoration: none;
+      background: $gray-100;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+  }
+
+  &__icon {
+    display: block;
+    font-size: rem-calc(26px);
+    @include media-breakpoint-up(sm) {
+      font-size: rem-calc(32px);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -0.5em;
+    right: -0.2em;
+    width: 2em;
+    height: 2em;
+    font-size: rem-calc(8px);
+    font-weight: 700;
+    line-height: 2em;
+    color: $white;
+    text-align: center;
+    background: $primary;
+    border-radius: 50%;
+  }
+
+  &__block {
+    &--search {
+      @include media-breakpoint-down(sm) {
+        flex-grow: 0;
+      }
+    }
+  }
+}

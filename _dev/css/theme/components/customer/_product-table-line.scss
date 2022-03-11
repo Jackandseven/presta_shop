@@ -1,0 +1,158 @@
+.product-line {
+  $self: &;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &--first {
+    border-top: 1px solid $border-color;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: table-row;
+    padding: 0;
+    padding: map-get($spacers, 2) 0;
+    border-bottom: 1px solid $border-color;
+  }
+
+  #{$self} {
+    // NESTING TO OVERRIDE BOOTSTRAP TABLE STYLES
+    &__cell {
+      padding: map-get($spacers, 2);
+      @include media-breakpoint-up(sm) {
+        padding: $table-cell-padding;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__qty-input {
+    .bootstrap-touchspin {
+      margin: 0 auto;
+    }
+  }
+
+  &__cell {
+
+    &--img {
+      width: rem-calc(120px);
+      @include media-breakpoint-down(sm) {
+        order: -3;
+        width: auto;
+        @include custom-col(rem-calc(90px));
+      }
+    }
+
+    &--prod {
+      @include media-breakpoint-down(sm) {
+        order: -2;
+        @include custom-col(calc(100% - #{rem-calc(90px)}));
+      }
+    }
+
+    &--delete {
+      @include media-breakpoint-down(sm) {
+        order: -1;
+        @include custom-col(rem-calc(40px));
+      }
+    }
+
+    &--price,
+    &--total,
+    &--qty {
+      @include media-breakpoint-down(sm) {
+        @include make-col(4);
+      }
+    }
+
+    &--total {
+      @include media-breakpoint-down(sm) {
+        text-align: right;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      &[data-title] {
+        &::before {
+          @include font-size($font-size-xs);
+          display: block;
+          margin: 0 0 map-get($spacers, 1);
+          content: attr(data-title);
+        }
+      }
+    }
+  }
+
+  &__price {
+    @include font-size($font-size-base);
+  }
+
+  &__checkbox-block {
+    position: static;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      cursor: pointer;
+    }
+  }
+
+  &--return {
+    #{$self} {
+      &__cell {
+        @include media-breakpoint-down(sm) {
+          &--checkbox {
+            order: -3;
+            @include custom-col(rem-calc(40px));
+          }
+          &--img {
+            @include custom-col(rem-calc(70px));
+            padding-left: 0
+          }
+
+          &--prod {
+            @include custom-col(calc(100% - #{rem-calc(110px)}));
+          }
+
+          &--qty,
+          &--price {
+            @include custom-col(50%);
+          }
+        }
+      }
+    }
+  }
+
+  &--extended {
+    #{$self} {
+      &__cell {
+        @include media-breakpoint-down(sm) {
+          &--price,
+          &--qty,
+          &--returned,
+          &--total {
+            @include custom-col(25%);
+          }
+        }
+        @include media-breakpoint-down(xs) {
+          &--price,
+          &--qty,
+          &--returned,
+          &--total {
+            @include custom-col(50%);
+          }
+          &--qty {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

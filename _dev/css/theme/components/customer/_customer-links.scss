@@ -1,0 +1,81 @@
+.customer-links {
+  margin: 0 0 map-get($spacers, 3);
+  @include media-breakpoint-up(lg) {
+    margin: 0;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    @include media-breakpoint-down(md) {
+      display: flex;
+      flex-wrap: nowrap;
+
+      margin: rem-calc(20px) 0 0;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    flex: 0 0;
+    max-width: inherit;
+    padding: map-get($spacers, 2);
+    font-weight: 700;
+    color: $gray-800;
+    white-space: nowrap;
+    border-radius: $border-radius;
+    @include font-size($font-size-base);
+
+    @include media-breakpoint-up(lg) {
+      white-space: normal;
+    }
+
+    @include hover-focus() {
+      color: $primary;
+      text-decoration: none;
+    }
+
+    &.active {
+      color: #fff;
+      background: $primary;
+
+      &::after {
+        display: block;
+      }
+
+      i {
+        color: inherit;
+      }
+    }
+
+    i {
+      margin-right: map-get($spacers, 1);
+      color: $primary;
+      @include font-size(26px);
+      @include media-breakpoint-up(md) {
+        margin-right: map-get($spacers, 2);
+      }
+    }
+  }
+
+  &__logout {
+    text-align: center;
+
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+}

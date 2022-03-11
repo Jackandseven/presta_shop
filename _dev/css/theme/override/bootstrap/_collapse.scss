@@ -1,0 +1,17 @@
+
+.icon-collapse {
+  &[aria-expanded="true"] {
+    .material-icons {
+      font-size: 0;
+
+      &::before {
+        font-size: 24px;
+        content: "keyboard_arrow_up";
+      }
+    }
+  }
+
+  @include hover-focus() {
+    text-decoration: none;
+  }
+}
